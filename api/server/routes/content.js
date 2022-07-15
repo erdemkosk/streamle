@@ -12,7 +12,7 @@ const {
 // const schemas = require('../../validator/foo');
 
 /**
- * This function comment is parsed by doctrine
+ * Get a single content with id
  * @route GET /content/{id}
  * @group content - About content operations
  * @param {string} id.query.required 5ec28e2ae47cce0017b0b65d
@@ -23,7 +23,7 @@ const {
 router.get('/:id', getContent);
 
 /**
- * This function comment is parsed by doctrine
+ * Search endpoint for retrive and find one or multiple contents
  * @route GET /content/search/{text}
  * @group content - About content operations
  * @param {string} text.query.required tita
@@ -34,7 +34,7 @@ router.get('/:id', getContent);
 router.get('/search/:text', searchContent);
 
 /**
- * This function comment is parsed by doctrine
+ * Get a content withing published date ıf cannot find retrive random content
  * @route GET /content/todays/{publishedDate}
  * @group content - About content operations
  * @param {string} publishedDate.query.required 24/10/2022
@@ -53,7 +53,7 @@ router.get('/todays/:publishedDate', getTodaysContent);
  * @property {string} publishedDate.body.required - publishedDate - eg: 24/10/2022
  */
 /**
- * This function comment is parsed by doctrine
+ * Post a content
  * @route POST /content/
  * @group content - About content operations
  * @param {Content.model} content.body.required
@@ -64,7 +64,7 @@ router.get('/todays/:publishedDate', getTodaysContent);
 router.post('/', addContent);
 
 /**
- * This function comment is parsed by doctrine
+ * Update a content
  * @route PUT /content/{id}
  * @group content - About content operations
  * @param {string} id.path.required - eg: 5e2f2f5737144e099c26c14b
@@ -76,7 +76,7 @@ router.post('/', addContent);
 router.put('/:id', updateContent);
 
 /**
- * This function comment is parsed by doctrine
+ * Delete a content
  * @route DELETE /content/{id}
  * @group content - About content operations
  * @param {string} id.path.required - eg: 5e2f2f5737144e099c26c14b
