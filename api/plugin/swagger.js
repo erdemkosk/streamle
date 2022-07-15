@@ -6,8 +6,8 @@ const config = require('../../config');
 const options = {
   swaggerDefinition: {
     info: {
-      description: 'Foo Api',
-      title: 'Foo Api Swagger',
+      description: 'Streamle Api',
+      title: 'Streamle Api Swagger',
       version: '1.0.0',
     },
     host: config.swagger.host,

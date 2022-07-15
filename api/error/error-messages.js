@@ -22,28 +22,20 @@ module.exports = {
     message: 'Warlock error.',
     code: 4,
   },
-  FooNotFound: {
+  ContentNotFound: {
     parentError: NotFoundError,
-    message: 'Foo not found.',
-    languages: {
-      en: 'Foo not found.',
-      tr: 'Foo bulunamadı.',
-    },
+    message: 'Content not found.',
     code: 1000,
   },
-  UserNotFoundOrWrongParameter: {
+  ContentCannotCreated: {
     parentError: NotFoundError,
-    message: 'User not found or wrong parameter.',
+    message: 'Content cannot created.',
     code: 1001,
   },
-  UserAlreadyCreated: {
+  ContentCannotUpdated: {
     parentError: NotFoundError,
-    message: 'User already created.',
-    code: 1003,
+    message: 'Content cannot updated.',
+    code: 1002,
   },
-  UserCannotCreated: {
-    parentError: NotFoundError,
-    message: 'User cannot created.',
-    code: 1004,
-  },
+
 };
