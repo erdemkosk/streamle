@@ -9,6 +9,13 @@ const ContentSchema = new Schema({
   type: { type: Number, required: true },
   createdAt: { type: Date, default: Date.now() },
   publishedDate: { type: String },
+  year_text: { type: String },
+  imdb_score: { type: Number },
+  imdb_path: { type: String },
+  poster_image_url: { type: String },
+  images: {
+    type: [String],
+  },
 },
 { versionKey: false });
 
