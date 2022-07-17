@@ -12,6 +12,24 @@ const checkToken = (req, res, next) => {
       token = token.slice(7, token.length);
     }
     jwt.verify(token, config.jwt.key, (err, decoded) => {
+      if (!err) {
+        req.decoded = decoded;
+      }
+      next();
+    });
+  }
+  else {
+    next();
+  }
+};
+
+const checkRequiredToken = (req, res, next) => {
+  let token = req.headers['x-access-token'] || req.headers.authorization;
+  if (token) {
+    if (token.startsWith('Bearer ')) {
+      token = token.slice(7, token.length);
+    }
+    jwt.verify(token, config.jwt.key, (err, decoded) => {
       if (err) {
         throw new TokenIsNotValid();
       }
@@ -26,4 +44,5 @@ const checkToken = (req, res, next) => {
 
 module.exports = {
   checkToken,
+  checkRequiredToken,
 };

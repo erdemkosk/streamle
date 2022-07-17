@@ -1,20 +1,17 @@
 const mongoose = require('mongoose');
 
-
 const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const UserSchema = new Schema({
   nameSurname: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
   },
   password: {
     type: String,
-    required: true,
     minlength: 6,
   },
   cryptoSalt: {
@@ -22,6 +19,17 @@ const UserSchema = new Schema({
     required: true,
   },
   createdAt: { type: Date, default: Date.now() },
+  deviceId: {
+    type: String,
+    required: true,
+  },
+  language: {
+    type: String,
+  },
+  deviceInfo: {
+    type: String,
+  },
+  correctGuesses: [{ type: ObjectId, ref: 'Content' }],
 },
 { versionKey: false });
 

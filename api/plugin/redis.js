@@ -4,7 +4,7 @@ const logger = require('./logger');
 
 const config = require('../../config');
 
-const client = redis.createClient(config.redis);
+const client = redis.createClient(config.url);
 client.hget = util.promisify(client.hget);
 
 client.on('connect', () => {
