@@ -8,6 +8,7 @@ const {
   deleteContent,
   searchContent,
   getTodaysContent,
+  getContentWithImdbPath,
 } = require('../controllers/content');
 // const schemas = require('../../validator/foo');
 
@@ -34,6 +35,17 @@ router.get('/:id', getContent);
 router.get('/search/:text', searchContent);
 
 /**
+ * Get content with using imdb path
+ * @route GET /content/imdb-path/{imdbPath}
+ * @group content - About content operations
+ * @param {string} imdbPath.query.required tita
+ * @returns {object} 200 - return single content
+ * @returns {Error}  default - Unexpected error
+ */
+
+router.get('/imdb-path/:imdb_path', getContentWithImdbPath);
+
+/**
  * Get a content withing published date ıf cannot find retrive random content
  * @route GET /content/todays/{publishedDate}
  * @group content - About content operations
@@ -51,6 +63,11 @@ router.get('/todays/:publishedDate', getTodaysContent);
  * @property {string} description.body.required - description - eg: Description
  * @property {string} type.body.required - type - eg: Films -> 1 Series -> 2
  * @property {string} publishedDate.body.required - publishedDate - eg: 24/10/2022
+ * @property {string} year_text.body.required - year_text - eg: 24/10/2022
+ * @property {string} imdb_score.body.required - imdb_score - eg: 8
+ * @property {string} imdb_path.body.required - imdb_path - eg: /title/1234
+ * @property {string} poster_image_url.body.required - poster_image_url - eg: imahe-url
+ * @property {Array.<string>} images.body.required - imahes - eg: img
  */
 /**
  * Post a content

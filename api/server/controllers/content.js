@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 const { successResponse } = require('../../util/response');
 
@@ -15,11 +16,29 @@ module.exports = {
 
   async addContent(req, res) {
     const {
-      name, title, description, type, publishedDate,
+      name,
+      title,
+      description,
+      type,
+      publishedDate,
+      year_text,
+      imdb_score,
+      imdb_path,
+      poster_image_url,
+      images,
     } = req.body;
 
     const { content } = await contentService.addContent({
-      name, title, description, type, publishedDate,
+      name,
+      title,
+      description,
+      type,
+      publishedDate,
+      year_text,
+      imdb_score,
+      imdb_path,
+      poster_image_url,
+      images,
     });
 
     return res.status(200).send(successResponse({ results: content }));
@@ -29,11 +48,30 @@ module.exports = {
     const { id } = req.params;
 
     const {
-      name, title, description, type, publishedDate,
+      name,
+      title,
+      description,
+      type,
+      publishedDate,
+      year_text,
+      imdb_score,
+      imdb_path,
+      poster_image_url,
+      images,
     } = req.body;
 
     const { content } = await contentService.updateContent({
-      id, name, title, description, type, publishedDate,
+      id,
+      name,
+      title,
+      description,
+      type,
+      publishedDate,
+      year_text,
+      imdb_score,
+      imdb_path,
+      poster_image_url,
+      images,
     });
 
     return res.status(200).send(successResponse({ results: content }));
@@ -59,6 +97,14 @@ module.exports = {
     const { publishedDate } = req.query;
 
     const { content } = await contentService.getTodaysContent({ publishedDate });
+
+    return res.status(200).send(successResponse({ results: content }));
+  },
+
+  async getContentWithImdbPath(req, res) {
+    const { imdbPath } = req.query;
+
+    const { content } = await contentService.getContentWithImdbPath({ imdbPath });
 
     return res.status(200).send(successResponse({ results: content }));
   },

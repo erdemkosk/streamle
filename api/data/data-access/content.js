@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const mongoose = require('mongoose');
 const Content = require('../models/content');
 
@@ -11,7 +12,16 @@ module.exports = {
   },
 
   async addContent({
-    name, title, description, type, publishedDate,
+    name,
+    title,
+    description,
+    type,
+    publishedDate,
+    year_text,
+    imdb_score,
+    imdb_path,
+    poster_image_url,
+    images,
   }) {
     return (
       Content.findOneAndUpdate({ name },
@@ -21,7 +31,11 @@ module.exports = {
             description,
             type,
             publishedDate,
-
+            year_text,
+            imdb_score,
+            imdb_path,
+            poster_image_url,
+            images,
           },
         },
         { upsert: true, new: true })
@@ -31,12 +45,31 @@ module.exports = {
   },
 
   async updateContent({
-    id, name, title, description, type, publishedDate,
+    id,
+    name,
+    title,
+    description,
+    type,
+    publishedDate,
+    year_text,
+    imdb_score,
+    imdb_path,
+    poster_image_url,
+    images,
   }) {
     return (
       Content.findByIdAndUpdate(id, {
         $set: {
-          name, title, description, type, publishedDate,
+          name,
+          title,
+          description,
+          type,
+          publishedDate,
+          year_text,
+          imdb_score,
+          imdb_path,
+          poster_image_url,
+          images,
         },
       }, { new: true })
         .lean()
@@ -73,6 +106,14 @@ module.exports = {
   async findTodaysContentWithDate({ publishedDate }) {
     return (
       Content.findOne({ publishedDate })
+        .lean()
+        .exec()
+    );
+  },
+
+  async getContentWithImdbPath({ imdbPath }) {
+    return (
+      Content.findOne({ imdb_path: imdbPath })
         .lean()
         .exec()
     );

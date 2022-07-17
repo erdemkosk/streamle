@@ -105,4 +105,16 @@ module.exports = {
       content,
     };
   },
+
+  async getContentWithImdbPath({
+    imdbPath,
+  }) {
+    const content = await contentDataAccess.getContentWithImdbPath({
+      imdbPath,
+    });
+
+    return {
+      content,
+    };
+  },
 };
