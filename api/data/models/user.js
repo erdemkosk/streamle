@@ -30,7 +30,12 @@ const UserSchema = new Schema({
   deviceInfo: {
     type: String,
   },
-  correctGuesses: [{ type: ObjectId, ref: 'Content' }],
+  correctGuesses: [
+    { _id: false, content: ObjectId, date: Date },
+  ],
+  uncorrectGuesses: [
+    { _id: false, content: ObjectId, date: Date },
+  ],
 },
 { versionKey: false });
 

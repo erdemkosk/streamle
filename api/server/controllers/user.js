@@ -15,12 +15,12 @@ module.exports = {
     return res.status(200).send(successResponse({ results: userFormatter({ user }) }));
   },
 
-  async addCorrectGuesses(req, res) {
+  async addGuesses(req, res) {
     const { userId } = tokenHelper(req);
 
-    const { contentId } = req.body;
+    const { contentId, finalGuess } = req.body;
 
-    const { success } = await userService.addCorrectGuesses({ id: userId, contentId });
+    const { success } = await userService.addGuesses({ id: userId, contentId, finalGuess });
 
     return res.status(200).send(successResponse({ results: success }));
   },

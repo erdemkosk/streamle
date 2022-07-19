@@ -6,9 +6,10 @@ const schemas = {
     [Segments.QUERY]: {
     },
   },
-  addCorrectGuesses: {
+  addGuesses: {
     [Segments.BODY]: {
       contentId: Joi.string().required(),
+      finalGuess: Joi.string().required(),
     },
   },
 };

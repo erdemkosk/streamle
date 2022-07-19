@@ -95,7 +95,30 @@ module.exports = {
           _id: id,
         }, {
           $addToSet: {
-            correctGuesses: contentId,
+            correctGuesses: {
+              content: contentId,
+              date: Date.now(),
+            },
+          },
+        }, { new: true })
+        .lean()
+        .exec()
+    );
+  },
+
+  async addUncorrectGuesses({
+    id, contentId,
+  }) {
+    return (
+      User
+        .updateOne({
+          _id: id,
+        }, {
+          $addToSet: {
+            uncorrectGuesses: {
+              content: contentId,
+              date: Date.now(),
+            },
           },
         }, { new: true })
         .lean()

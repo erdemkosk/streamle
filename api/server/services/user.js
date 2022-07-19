@@ -21,17 +21,23 @@ module.exports = {
     };
   },
 
-  async addCorrectGuesses({ id, contentId }) {
+  async addGuesses({ id, contentId, finalGuess }) {
     const user = await userDataAccess.getUser({ id });
 
     if (!user) {
-      logger.error('[UserService - addCorrectGuesses failed]%o', {
+      logger.error('[UserService - addGuesses failed]%o', {
         id,
       });
       throw new UserNotFoundOrWrongParameter();
     }
 
-    await userDataAccess.addCorrectGuesses({ id, contentId });
+    if (contentId === finalGuess) {
+      await userDataAccess.addCorrectGuesses({ id, contentId });
+    }
+
+    else {
+      await userDataAccess.addUncorrectGuesses({ id, contentId });
+    }
 
     return {
       success: true,
