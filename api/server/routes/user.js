@@ -21,8 +21,9 @@ router.get('/', auth.checkRequiredToken, celebrate(schemas.getUser), getUser);
 
 /**
  * @typedef GuessModel
- * @property {string} contentId.body.required -  name - eg: 5ec28e2ae47cce0017b0b65d
- * @property {boolean} isCorrect.body.required -  name - eg: true
+ * @property {string} contentId.body.required -  contentId - eg: 5ec28e2ae47cce0017b0b65d
+ * @property {boolean} isCorrect.body.required -  isCorrect - eg: true
+ * @property {number} guessCount.body.required -  guessCount - eg: 1
  */
 /**
  * Call when user made a guesses

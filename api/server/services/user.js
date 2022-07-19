@@ -21,7 +21,9 @@ module.exports = {
     };
   },
 
-  async addGuesses({ id, contentId, isCorrect }) {
+  async addGuesses({
+    id, contentId, isCorrect, guessCount,
+  }) {
     const user = await userDataAccess.getUser({ id });
 
     if (!user) {
@@ -32,7 +34,7 @@ module.exports = {
     }
 
     if (isCorrect) {
-      await userDataAccess.addCorrectGuesses({ id, contentId });
+      await userDataAccess.addCorrectGuesses({ id, contentId, guessCount });
     }
 
     else {

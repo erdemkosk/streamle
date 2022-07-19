@@ -18,9 +18,11 @@ module.exports = {
   async addGuesses(req, res) {
     const { userId } = tokenHelper(req);
 
-    const { contentId, isCorrect } = req.body;
+    const { contentId, isCorrect, guessCount } = req.body;
 
-    const { success } = await userService.addGuesses({ id: userId, contentId, isCorrect });
+    const { success } = await userService.addGuesses({
+      id: userId, contentId, isCorrect, guessCount,
+    });
 
     return res.status(200).send(successResponse({ results: success }));
   },

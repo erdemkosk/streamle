@@ -10,6 +10,7 @@ const schemas = {
     [Segments.BODY]: {
       contentId: Joi.string().required(),
       isCorrect: Joi.bool().required(),
+      guessCount: Joi.number().required(),
     },
   },
 };

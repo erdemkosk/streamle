@@ -87,7 +87,7 @@ module.exports = {
   },
 
   async addCorrectGuesses({
-    id, contentId,
+    id, contentId, guessCount,
   }) {
     return (
       User
@@ -97,6 +97,7 @@ module.exports = {
           $addToSet: {
             correctGuesses: {
               content: contentId,
+              guessCount,
               date: Date.now(),
             },
           },

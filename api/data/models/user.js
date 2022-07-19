@@ -43,6 +43,10 @@ const UserSchema = new Schema({
           type: Date,
           required: true,
         },
+      guessCount:
+        {
+          type: Number,
+        },
     },
   ],
   uncorrectGuesses: [
