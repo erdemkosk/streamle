@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 const mongoose = require('mongoose');
 const Content = require('../models/content');
+const { MAX_SEARCH_COUNT } = require('../../constant');
 
 module.exports = {
   async getContent({ id }) {
@@ -88,6 +89,7 @@ module.exports = {
   async searchContent({ text }) {
     return (
       Content.find({ name: { $regex: text, $options: 'i' } })
+        .limit(MAX_SEARCH_COUNT)
         .lean()
         .exec()
     );

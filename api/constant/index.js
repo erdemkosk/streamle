@@ -5,4 +5,5 @@ module.exports = {
   },
 
   CRYPTO_KEY: '1234567890123456',
+  MAX_SEARCH_COUNT: 20,
 };
