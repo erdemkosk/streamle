@@ -21,7 +21,7 @@ module.exports = {
     };
   },
 
-  async addGuesses({ id, contentId, finalGuess }) {
+  async addGuesses({ id, contentId, isCorrect }) {
     const user = await userDataAccess.getUser({ id });
 
     if (!user) {
@@ -31,7 +31,7 @@ module.exports = {
       throw new UserNotFoundOrWrongParameter();
     }
 
-    if (contentId === finalGuess) {
+    if (isCorrect) {
       await userDataAccess.addCorrectGuesses({ id, contentId });
     }
 

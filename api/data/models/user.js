@@ -38,12 +38,11 @@ const UserSchema = new Schema({
         require: true,
         ref: 'Content',
       },
-      date: [
+      date:
         {
           type: Date,
           required: true,
         },
-      ],
     },
   ],
   uncorrectGuesses: [

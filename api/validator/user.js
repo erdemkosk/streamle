@@ -9,7 +9,7 @@ const schemas = {
   addGuesses: {
     [Segments.BODY]: {
       contentId: Joi.string().required(),
-      finalGuess: Joi.string().required(),
+      isCorrect: Joi.bool().required(),
     },
   },
 };
