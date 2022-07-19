@@ -19,6 +19,7 @@ const UserSchema = new Schema({
     required: true,
   },
   createdAt: { type: Date, default: Date.now() },
+  lastInitDate: { type: Date, default: Date.now() },
   deviceId: {
     type: String,
     required: true,

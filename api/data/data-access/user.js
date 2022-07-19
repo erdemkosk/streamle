@@ -78,6 +78,7 @@ module.exports = {
             deviceType,
             ntfId,
             deviceInfo,
+            lastInitDate: Date.now(),
           },
         }, { new: true })
         .lean()
