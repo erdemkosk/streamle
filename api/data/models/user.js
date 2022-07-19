@@ -31,10 +31,35 @@ const UserSchema = new Schema({
     type: String,
   },
   correctGuesses: [
-    { _id: false, content: ObjectId, date: Date },
+    {
+      _id: false,
+      content: {
+        type: ObjectId,
+        require: true,
+        ref: 'Content',
+      },
+      date: [
+        {
+          type: Date,
+          required: true,
+        },
+      ],
+    },
   ],
   uncorrectGuesses: [
-    { _id: false, content: ObjectId, date: Date },
+    {
+      _id: false,
+      content: {
+        type: ObjectId,
+        require: true,
+        ref: 'Content',
+      },
+      date:
+        {
+          type: Date,
+          required: true,
+        },
+    },
   ],
 },
 { versionKey: false });
